@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<input type="button" value="Send Auction" id="btnSendAuction" />
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSendAuction").click(function () {
+            var auction = {};
+            auction.Title = "bobo";
+            auction.Description = "Des1";
+            auction.StartTime = new Date();
+            auction.Bids = [{ "TimeStamp": "01/12/2015 6:00 AM", "Amount": 95 }, { "TimeStamp": "01/12/2015 9:00 AM", "Amount": 135 }];
+
+            $.post("/home/updateAuction", { "auction": JSON.stringify(auction) }, function (res) {
+                alert(JSON.stringify(res));
+            })
+        });
+
+
+    })
+</script>
